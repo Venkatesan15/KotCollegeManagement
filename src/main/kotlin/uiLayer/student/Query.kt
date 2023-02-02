@@ -1,6 +1,8 @@
 package uiLayer.student
 
 import middleLayer.ComplaintsML
+import uiLayer.ComplaintNC
+import java.time.LocalDate
 
 class Query {
     fun sendQuery(id : Int)
@@ -10,7 +12,9 @@ class Query {
         if(!complaint.isNullOrEmpty())
         {
             val complaintML=ComplaintsML()
-            complaintML.insertQuery(id, complaint)
+
+            val complaintObj=ComplaintNC(LocalDate.now(),id,complaint)
+            complaintML.insertQuery(complaintObj)
             println("Successfully sent")
         }
         else

@@ -1,5 +1,6 @@
 package dataLayer
 
+import uiLayer.ComplaintNC
 import java.sql.ResultSet
 import java.time.LocalDate
 
@@ -26,8 +27,8 @@ class ComplaintsDL {
         println("Exception in delete Complaints : $e")
     }
 
-    fun insertQuery(id:Int,query:String)=try {
-        val query1="INSERT INTO Queries(Date,Query,studentId) VALUES('${LocalDate.now()}','$query',$id)"
+    fun insertQuery(complaintObj : ComplaintNC)=try {
+        val query1="INSERT INTO Queries(Date,Query,studentId) VALUES('${complaintObj.date}','${complaintObj.complaint}',${complaintObj.studentId})"
         val st=con?.createStatement()
         st?.executeUpdate(query1)
     }

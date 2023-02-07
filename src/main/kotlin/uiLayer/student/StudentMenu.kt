@@ -18,7 +18,21 @@ class StudentMenu {
             else
             {
                 println("Roll Number Not in the list")
-                return logIn()
+                val a by lazy {
+                    run select@
+                    {
+                        var ui: Int? = 0
+                        while (ui != 1 && ui != 2) {
+                            println("Try Again--->1")
+                            println("Back--->2")
+                            ui = readln().toIntOrNull()
+
+                        }
+                        return@select ui
+                    }
+                }
+                if(a==1) return logIn()
+
             }
         }
         else

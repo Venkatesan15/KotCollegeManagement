@@ -34,7 +34,7 @@ class FeesStudent {
         }
     }
 
-    fun payFees(id:Int) {
+    private fun payFees(id:Int) {
         try {
             val rs=feesML.getUnpaidList(id)
             rs?.next()
@@ -70,6 +70,7 @@ class FeesStudent {
                     feesML.setPaid(id,particularName)
 
                     println("Successfully Paid")
+                    list.removeAt(particularNo-1)
                     println()
                 }
                 else
@@ -78,7 +79,6 @@ class FeesStudent {
                     return payFees(id)
                 }
             }
-
         }
         catch (e:Exception)
         {

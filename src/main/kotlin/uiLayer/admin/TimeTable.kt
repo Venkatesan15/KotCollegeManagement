@@ -7,7 +7,6 @@ class TimeTable {
     private val timeTableMl =TimeTableML()
     fun setTimeTable()
     {
-
         print("No of DayOrders(5,6,7) : ")
         val ui= readln().toIntOrNull()
         var index=1
@@ -25,7 +24,7 @@ class TimeTable {
             return setTimeTable()
         }
     }
-    fun getTimeTableObj(dayOrder:Int):TimeTableNC
+    private fun getTimeTableObj(dayOrder:Int):TimeTableNC
         {
             println("Day Order : $dayOrder")
             print("First Period  : ")
@@ -80,7 +79,6 @@ class TimeTable {
         }
        else println("You can't Add day order above 7 ")
     }
-
     fun showTimeTable()
     {
         try {

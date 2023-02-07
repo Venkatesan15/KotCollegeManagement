@@ -28,7 +28,7 @@ class Validator {
         print("Enter the Name(Only Capital) : ")
         val name= readlnOrNull()
         return if(name!=null) {
-            val p: Pattern = Pattern.compile("[A-Z]{1}[A-Z\\s]+")
+            val p: Pattern = Pattern.compile("[A-Z][A-Z\\s]+")
             val m: Matcher = p.matcher(name)
             if (m.matches()) name else {
                 println("Please Enter Valid Name ")
@@ -66,9 +66,9 @@ class Validator {
     {
         print("Enter Phone Number : ")
         val phoneNo= readlnOrNull()
-        val p:Pattern=Pattern.compile("[1-9]{1}[0-9]{9}")
-        val m:Matcher =p.matcher(phoneNo)
-        return if(m.matches() && phoneNo!=null) phoneNo else {
+        val p:Pattern=Pattern.compile("[1-9][0-9]{9}")
+        val m:Matcher =p.matcher(phoneNo!!)
+        return if(m.matches()) phoneNo else {
             println("Please enter valid Phone Number")
             getPhoneNumber()
         }

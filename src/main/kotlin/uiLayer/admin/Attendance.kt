@@ -23,7 +23,6 @@ class Attendance {
             println("Please Enter valid Date format")
             getHistByDate()
         }
-
     }
     fun getHistByRollNo()
     {
@@ -72,8 +71,6 @@ class Attendance {
                 var rollNumber:String?
                 var name:String
                 var status:Status
-                //if(studentList==null ||studentList.) return println("Student List is Empty")
-
                 if(studentList?.next()==false) {
                     println("The Student List is Empty")
                     println()

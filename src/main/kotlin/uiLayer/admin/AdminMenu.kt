@@ -3,7 +3,6 @@ package uiLayer.admin
 class AdminMenu {
     fun adminMenu()
     {
-
         val adminDashboard:AdminUI=AdminDashboard()
 
         var userIp:Int?= 1

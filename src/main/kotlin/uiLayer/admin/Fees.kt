@@ -8,7 +8,7 @@ import java.time.LocalDate
 
 class Fees {
     private val feesDetailML=FeesDetailsML()
-    val a by lazy {
+    private val a by lazy {
         run select@
         {
             var ui: Int? = 0
@@ -27,11 +27,13 @@ class Fees {
         var particular:String
         var amount:Long
         var date:LocalDate
+        if(rs?.next()==false) return println("Particular List is Empty...")
+
+
         System.out.printf("%-20s  :  %-13s  :  %-15s","Particulars","Amount","Last Date")
         println()
-        while (rs?.next()==true)
-        {
-            particular=rs.getString("Particulars")
+        do{
+            particular=rs!!.getString("Particulars")
             amount=rs.getLong("Amount")
             date=LocalDate.parse(rs.getString("LastDate"))
 
@@ -39,7 +41,7 @@ class Fees {
 
             System.out.printf("%-20s  :  %-13s  :  %-15s",feesObj.particular,feesObj.amount,feesObj.lastDate)
             println()
-        }
+        }while (rs?.next()==true)
         println()
     }
     fun deleteParticular()

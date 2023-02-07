@@ -10,7 +10,7 @@ class TimeTable {
         print("No of DayOrders(5,6,7) : ")
         val ui= readln().toIntOrNull()
         var index=1
-        if(ui!=null) {
+        if(ui!=null && ui in 1..7) {
             while (index <= ui) {
 
                 val timeTableObj=getTimeTableObj(index)
@@ -88,19 +88,24 @@ class TimeTable {
             var tP:String?
             var fP:String?
 
+
             if(timeTable!=null)
             {
+                if(!timeTable.next())
+                {
+                    println("No Time Table is Entered..")
+                    return
+                }
                 System.out.printf("%-10s : %-15s : %-15s : %-15s  :  %-15s","Day Order","First Period","Second Period","Third Period","Fourth Period")
                 println()
-                while (timeTable.next()) {
-
+                do{
                     firstP=timeTable.getString("FirstPeriod")
                     sP=timeTable.getString("SecondPeriod")
                     tP=timeTable.getString("ThirdPeriod")
                     fP=timeTable.getString("FourthPeriod")
                     System.out.printf("%-10s : %-15s : %-15s : %-15s  :  %-15s",timeTable.getInt("DayOrder"),firstP,sP,tP,fP)
                     println()
-                }
+                }while (timeTable.next())
             }
         }
         catch (e:Exception)

@@ -59,7 +59,7 @@ class StudentMenu {
             println("**     Exit------------------>5     **")
             println("**************************************")
             ui= readln().toIntOrNull()
-            if(ui==null && ui !in 1..5 )
+            if(ui==null || ui !in 1..5 )
             {
                 println("Please Enter valid Input")
                 ui=1

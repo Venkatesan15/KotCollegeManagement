@@ -16,16 +16,14 @@ class AttendanceDL {
             val st = con?.createStatement()
             val rs = st?.executeQuery(query1)
             rs?.next()
-            if (rs?.getInt("res") == 1) {
+            return if (rs?.getInt("res") == 1) {
                 val query = "SELECT * FROM Attendance WHERE Date='$date'"
-                return st.executeQuery(query)
+                st.executeQuery(query)
 
-            }
-            else
-            {
+            } else {
                 println("The Specific Date is not in the list")
                 println()
-                return null
+                null
             }
 
 
@@ -43,16 +41,14 @@ class AttendanceDL {
             val rs=st?.executeQuery(query1)
             rs?.next()
 
-            if (rs?.getInt("res") == 1) {
+            return if (rs?.getInt("res") == 1) {
 
                 val query = "SELECT * FROM Attendance WHERE StudentId='$studentId'"
-                return st.executeQuery(query)
-            }
-            else
-            {
+                st.executeQuery(query)
+            } else {
                 println("The specific rollNumber not in the list")
                 println()
-                return null
+                null
             }
 
         } catch (e: Exception) {
@@ -94,22 +90,18 @@ class AttendanceDL {
                 val dateWithTime=LocalDateTime.now()
 
 
-                if(timeOfTheDay.equals("Morning"))  {
-                    if(dateWithTime.hour in 14..16)
-                    {
-                        return true
-                    }
-                    else {
+                return if(timeOfTheDay.equals("Morning"))  {
+                    if(dateWithTime.hour in 14..16) {
+                        true
+                    } else {
                         println("You are already Taken attendance")
                         println()
-                        return false
+                        false
                     }
-                }
-                else
-                {
+                } else {
                     println("Come Back Tomorrow")
                     println()
-                    return false
+                    false
                 }
             }
 

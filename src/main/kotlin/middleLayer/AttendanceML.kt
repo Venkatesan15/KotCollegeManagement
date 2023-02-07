@@ -2,7 +2,6 @@ package middleLayer
 
 import dataLayer.AttendanceDL
 import uiLayer.AttendanceNC
-import java.sql.ResultSet
 import java.time.LocalDate
 
 class AttendanceML {

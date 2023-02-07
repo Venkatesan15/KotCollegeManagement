@@ -2,7 +2,6 @@ package dataLayer
 
 import uiLayer.ComplaintNC
 import java.sql.ResultSet
-import java.time.LocalDate
 
 class ComplaintsDL {
     private val con=MySql.getConnection()

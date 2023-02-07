@@ -1,10 +1,8 @@
 package uiLayer.admin
-import dataLayer.TimeTableDL
 import middleLayer.StudentsDetails
 import uiLayer.Gender
 import uiLayer.StudentNC
 import validator.Validator
-import java.time.LocalDate
 
 class AdminDashboard :AdminUI{
     override fun addStudent()

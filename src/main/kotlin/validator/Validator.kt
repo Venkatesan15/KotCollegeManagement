@@ -10,7 +10,7 @@ class Validator {
     fun getRollNumber(): String {
         print("Enter Roll Number  : ")
         val rollNumber = readlnOrNull()
-        val studentDetails=StudentsDetails()
+        val studentDetails = StudentsDetails()
         return if (!rollNumber.isNullOrEmpty()) {
             if (!studentDetails.rollNoExists(rollNumber))
                 rollNumber.uppercase()
@@ -23,11 +23,11 @@ class Validator {
             getRollNumber()
         }
     }
-    fun getName() : String
+    fun getName(): String
     {
         print("Enter the Name(Only Capital) : ")
-        val name= readlnOrNull()
-        return if(name!=null) {
+        val name = readlnOrNull()
+        return if (name!=null) {
             val p: Pattern = Pattern.compile("[A-Z][A-Z\\s]+")
             val m: Matcher = p.matcher(name)
             if (m.matches()) name else {
@@ -39,7 +39,7 @@ class Validator {
             getName()
         }
     }
-    fun getGender():Gender
+    fun getGender(): Gender
     {
         var ui=0
         while (ui !in 1..3) {
@@ -48,7 +48,7 @@ class Validator {
             println("Male --->  1")
             println("Female --> 2")
             println("Trans ---> 3")
-            ui= readln().toIntOrNull()!!
+            ui = readln().toIntOrNull()!!
             if(ui !in 1..3)
             {
                 println("Please Select valid Gender")
@@ -62,19 +62,19 @@ class Validator {
             else -> null!!
         }
     }
-    fun getPhoneNumber() : String
+    fun getPhoneNumber(): String
     {
         print("Enter Phone Number : ")
-        val phoneNo= readlnOrNull()
-        val p:Pattern=Pattern.compile("[1-9][0-9]{9}")
-        val m:Matcher =p.matcher(phoneNo!!)
-        return if(m.matches()) phoneNo else {
+        val phoneNo = readlnOrNull()
+        val p:Pattern = Pattern.compile("[1-9][0-9]{9}")
+        val m:Matcher = p.matcher(phoneNo!!)
+        return if (m.matches()) phoneNo else {
             println("Please enter valid Phone Number")
             getPhoneNumber()
         }
 
     }
-    fun getDOB():LocalDate
+    fun getDOB(): LocalDate
     {
         print("Enter Date Of Birth(yyyy-MM-dd) : ")
         val dob= readln()
@@ -91,9 +91,9 @@ class Validator {
             return getDOB()
         }
     }
-    fun getAge(dob :LocalDate):Int
+    fun getAge(dob: LocalDate): Int
     {
-        val now=LocalDate.now()
-        return now.year-dob.year
+        val now =LocalDate.now()
+        return now.year - dob.year
     }
 }

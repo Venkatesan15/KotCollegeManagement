@@ -2,10 +2,18 @@ package uiLayer
 
 import java.time.LocalDate
 
-data class StudentNC(var rollNo:String, var name:String, var gender : Gender, var phoneNumber : String, var DOB : LocalDate, var age :Int)
+data class StudentNC(val rollNo: String,
+                     val name: String,
+                     val gender: Gender,
+                     val phoneNumber: String,
+                     val DOB: LocalDate,
+                     val age: Int
+)
 
 
 enum class Gender
 {
-   MALE,FEMALE,TRANS
+   MALE,
+   FEMALE,
+   TRANS
 }

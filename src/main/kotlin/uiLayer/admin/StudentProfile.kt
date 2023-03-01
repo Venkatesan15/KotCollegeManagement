@@ -6,9 +6,8 @@ import java.sql.ResultSet
 import java.time.LocalDate
 
 class StudentProfile {
-    fun showStudentProfile(student:ResultSet)
-    {
-        var id=1
+    fun showStudentProfile(student: ResultSet) {
+        var id = 1
 
         while (student.next()) {
             val rollNumber1 = student.getString("RollNumber")
@@ -34,7 +33,7 @@ class StudentProfile {
             println()
             id++
         }
-        if(id==1) println("Students Lists is Empty")
+        if (id == 1) println("Students Lists is Empty")
 
     }
 }

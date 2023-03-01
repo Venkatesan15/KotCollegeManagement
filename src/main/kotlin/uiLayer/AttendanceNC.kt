@@ -2,9 +2,10 @@ package uiLayer
 
 import java.time.LocalDate
 
-data class AttendanceNC(var studentId:Int, var date:LocalDate, var status:Status)
+data class AttendanceNC(val studentId: Int,
+                        val date: LocalDate,
+                        val present:Boolean
+)
 
-enum class Status{
-    P, A
-}
+
 

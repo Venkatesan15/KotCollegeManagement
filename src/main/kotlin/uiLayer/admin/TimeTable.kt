@@ -4,28 +4,29 @@ import middleLayer.TimeTableML
 import uiLayer.TimeTableNC
 
 class TimeTable {
-    private val timeTableMl =TimeTableML()
-    fun setTimeTable()
-    {
-        print("No of DayOrders(5,6,7) : ")
-        val ui= readln().toIntOrNull()
-        var index=1
-        if(ui!=null && ui in 1..7) {
-            while (index <= ui) {
+    private val timeTableMl = TimeTableML()
+    fun setTimeTable() {
 
-                val timeTableObj=getTimeTableObj(index)
+        print("No of DayOrders(5,6,7) : ")
+
+        val ui = readln().toIntOrNull()
+        var index = 1
+
+        if (ui != null && ui in 1..7) {
+            while (index <= ui) {
+                val timeTableObj = getTimeTableObj(index)
                 timeTableMl.insert(timeTableObj)
                 index++
             }
         }
-        else
-        {
+        else {
             println("Please enter valid input")
             return setTimeTable()
         }
     }
-    private fun getTimeTableObj(dayOrder:Int):TimeTableNC
-        {
+
+    private fun getTimeTableObj(dayOrder: Int): TimeTableNC {
+
             println("Day Order : $dayOrder")
             print("First Period  : ")
             val firstP = readln()
@@ -36,80 +37,80 @@ class TimeTable {
             print("Fourth Period : ")
             val fP = readln()
             return TimeTableNC(dayOrder, firstP, sP, tP, fP)
-        }
+    }
 
     fun delete() {
+
         timeTableMl.delete()
         println("Successfully Deleted")
     }
-    fun editByDayOrder()
-    {
+
+    fun editByDayOrder() {
+
         print("Enter Day Order(<=7) : ")
         val dayOrder:Int? = readln().toIntOrNull()
-        if(dayOrder!=null && dayOrder in 1..7)
-        {
-            if(timeTableMl.dayOrderExists(dayOrder))
-            {
-                val timeTableObj=getTimeTableObj(dayOrder)
-                timeTableMl.editTimeTable(timeTableObj)
 
+        if (dayOrder != null && dayOrder in 1..7) {
+
+            if (timeTableMl.dayOrderExists(dayOrder)) {
+                val timeTableObj = getTimeTableObj(dayOrder)
+                timeTableMl.editTimeTable(timeTableObj)
                 println("Successfully Edited")
                 println()
             }
-            else
-            {
+            else {
                 println("This Day Order Not in the list,So u can't edit")
             }
         }
-        else
-        {
+        else {
             println("Please enter valid Input")
         }
     }
 
-    fun addExtraDayOrder()
-    {
-        val dayOrderCount=timeTableMl.getCountDayOrder()
-        if(dayOrderCount!=null && dayOrderCount<7)
-        {
-            val timeTableObj=getTimeTableObj(dayOrderCount+1)
+    fun addExtraDayOrder() {
+
+        val dayOrderCount = timeTableMl.getCountDayOrder()
+
+        if(dayOrderCount != null && dayOrderCount < 7) {
+            val timeTableObj = getTimeTableObj(dayOrderCount+1)
             timeTableMl.insert(timeTableObj)
             println("Successfully Updated")
             println()
         }
-       else println("You can't Add day order above 7 ")
+       else {
+           println("You can't Add day order above 7 ")
+        }
     }
-    fun showTimeTable()
-    {
+    fun showTimeTable() {
+
         try {
-            val timeTable =timeTableMl.getTimeTable()
-            var firstP:String?
-            var sP:String?
-            var tP:String?
-            var fP:String?
+            val timeTable = timeTableMl.getTimeTable()
+            var firstP: String?
+            var sP: String?
+            var tP: String?
+            var fP: String?
 
 
-            if(timeTable!=null)
-            {
-                if(!timeTable.next())
-                {
+            if(timeTable!=null) {
+
+                if(!timeTable.next()) {
                     println("No Time Table is Entered..")
                     return
                 }
                 System.out.printf("%-10s : %-15s : %-15s : %-15s  :  %-15s","Day Order","First Period","Second Period","Third Period","Fourth Period")
                 println()
+
                 do{
                     firstP=timeTable.getString("FirstPeriod")
                     sP=timeTable.getString("SecondPeriod")
                     tP=timeTable.getString("ThirdPeriod")
                     fP=timeTable.getString("FourthPeriod")
-                    System.out.printf("%-10s : %-15s : %-15s : %-15s  :  %-15s",timeTable.getInt("DayOrder"),firstP,sP,tP,fP)
+                    System.out.printf("%-10s : %-15s : %-15s : %-15s  :  %-15s",timeTable.getInt("DayOrder"), firstP, sP, tP, fP)
                     println()
                 }while (timeTable.next())
             }
         }
-        catch (e:Exception)
-        {
+        catch (e:Exception) {
             println("Exception in TimeTable : $e")
         }
     }

@@ -1,22 +1,18 @@
 package uiLayer.admin
 
 class LogInPage{
-    fun checkPass()
-    {
-        print("Please Enter The admin Password  :  ")
-        val pass= readln()
-        if(pass=="ZOHO")
-        {
-            val adminMenu=AdminMenu()
-            adminMenu.adminMenu()
 
+    fun checkPass() {
+        print("Please Enter The admin Password  :  ")
+        val pass = readln()
+        if(pass == "ZOHO") {
+            val adminMenu = AdminMenu()
+            adminMenu.adminMenu()
         }
-        else
-        {
+        else {
             println("The password is wrong")
             val a by lazy {
-                run select@
-                {
+                run select@ {
                     var ui: Int? = 0
                     while (ui != 1 && ui != 2) {
                         println("Try Again--->1")
@@ -27,7 +23,7 @@ class LogInPage{
                     return@select ui
                 }
             }
-            if(a==1) return checkPass()
+            if (a == 1) return checkPass()
         }
     }
 }

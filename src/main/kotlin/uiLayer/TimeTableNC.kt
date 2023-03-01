@@ -1,3 +1,9 @@
 package uiLayer
 
-data class TimeTableNC(var dayOrder: Int,var firstP: String,var sP : String,var tP : String,var fP : String)
+data class TimeTableNC(
+    val dayOrder: Int,
+    val firstP: String,
+    val sP: String,
+    val tP: String,
+    val fP: String
+)

@@ -2,4 +2,7 @@ package uiLayer
 
 import java.time.LocalDate
 
-data class ComplaintNC(var date:LocalDate,var studentId : Int,val complaint: String)
+data class ComplaintNC(val date: LocalDate,
+                       val studentId: Int,
+                       val complaint: String
+)
